@@ -77,38 +77,4 @@ class Utils():
 
 
 
-"""
-def get_data():
-    lines = []
-    SRC = os.path.join("BC")
-    IMG_SRC = os.path.join(SRC,"IMG")
-    CSV_SRC = os.path.join(SRC,"driving_log.csv")
 
-    with open(CSV_SRC) as csvfile:
-        reader = csv.reader(csvfile)
-        cnt = 0
-        for line in reader:
-            lines.append(line)
-            if cnt == 5000:
-                break
-            cnt += 1
-
-    images = []
-    measurements = []
-
-    for line in lines:
-        source_path = line[0]
-        filename = source_path.split('/')[-1]
-        image = mpimg.imread(os.path.join(IMG_SRC,filename))
-
-        images.append(image)
-
-        measurement = float(line[3])
-        measurements.append(measurement)
-
-    X_train = np.array(images)
-    y_train = np.array(measurements)
-
-    return X_train, y_train
-
-"""

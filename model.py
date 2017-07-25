@@ -11,8 +11,8 @@ tf.python.control_flow_ops = tf
 
 learning_rate = 1e-4
 nb_epochs = 10
-nb_samples_per_epoch = 20032
-nb_val_samples = 6400
+nb_samples_per_epoch = 6000
+nb_val_samples = 2037
 
 api = Utils()
 

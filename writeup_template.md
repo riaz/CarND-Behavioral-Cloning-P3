@@ -59,6 +59,8 @@ The model.py file contains the code for training and saving the convolution neur
 
 Check Arc.png in images.
 
+![image] (https://github.com/riaz/CarND-Behavioral-Cloning-P3/blob/master/images/Arc.png)
+
 ====================================================================================================
 
 
@@ -108,7 +110,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 We used the NVIDIA End-to-End Learning Architecture.
 
 
-![alt text][image1]
+![alt text][https://github.com/riaz/CarND-Behavioral-Cloning-P3/blob/master/images/Arc.png]
 
 ####3. Creation of the Training Set & Training Process
 

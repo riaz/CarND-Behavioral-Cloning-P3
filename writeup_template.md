@@ -1,8 +1,14 @@
-#**Behavioral Cloning** 
+# Term 1 Project 3 - Behavioral Cloning
 
-##Writeup Template
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+## Project Overview
+
+The objective of this project is to clone human driving behavior based on the current using a Deep Neural Network. 
+In order to achieve this, we are going to use a simple Car Simulator.
+During the training phase, we navigate our car inside the simulator using the keyboard. 
+While we navigating the car the simulator records training images and respective steering angles. 
+Then we use those recorded data to train our neural network. Trained model was tested on two tracks, namely training track and validation track. 
+Following two animations show the performance of our final model in both training and validation tracks.
 
 ---
 
@@ -51,6 +57,64 @@ python drive.py model.h5
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
 ###Model Architecture and Training Strategy
+
+Layer (type)                     Output Shape          Param #     Connected to                     
+====================================================================================================
+lambda_1 (Lambda)                (None, 64, 64, 3)     0           lambda_input_1[0][0]             
+____________________________________________________________________________________________________
+convolution2d_1 (Convolution2D)  (None, 32, 32, 24)    1824        lambda_1[0][0]                   
+____________________________________________________________________________________________________
+activation_1 (Activation)        (None, 32, 32, 24)    0           convolution2d_1[0][0]            
+____________________________________________________________________________________________________
+maxpooling2d_1 (MaxPooling2D)    (None, 31, 31, 24)    0           activation_1[0][0]               
+____________________________________________________________________________________________________
+convolution2d_2 (Convolution2D)  (None, 16, 16, 36)    21636       maxpooling2d_1[0][0]             
+____________________________________________________________________________________________________
+activation_2 (Activation)        (None, 16, 16, 36)    0           convolution2d_2[0][0]            
+____________________________________________________________________________________________________
+maxpooling2d_2 (MaxPooling2D)    (None, 15, 15, 36)    0           activation_2[0][0]               
+____________________________________________________________________________________________________
+convolution2d_3 (Convolution2D)  (None, 8, 8, 48)      43248       maxpooling2d_2[0][0]             
+____________________________________________________________________________________________________
+activation_3 (Activation)        (None, 8, 8, 48)      0           convolution2d_3[0][0]            
+____________________________________________________________________________________________________
+maxpooling2d_3 (MaxPooling2D)    (None, 7, 7, 48)      0           activation_3[0][0]               
+____________________________________________________________________________________________________
+convolution2d_4 (Convolution2D)  (None, 7, 7, 64)      27712       maxpooling2d_3[0][0]             
+____________________________________________________________________________________________________
+activation_4 (Activation)        (None, 7, 7, 64)      0           convolution2d_4[0][0]            
+____________________________________________________________________________________________________
+maxpooling2d_4 (MaxPooling2D)    (None, 6, 6, 64)      0           activation_4[0][0]               
+____________________________________________________________________________________________________
+convolution2d_5 (Convolution2D)  (None, 6, 6, 64)      36928       maxpooling2d_4[0][0]             
+____________________________________________________________________________________________________
+activation_5 (Activation)        (None, 6, 6, 64)      0           convolution2d_5[0][0]            
+____________________________________________________________________________________________________
+maxpooling2d_5 (MaxPooling2D)    (None, 5, 5, 64)      0           activation_5[0][0]               
+____________________________________________________________________________________________________
+flatten_1 (Flatten)              (None, 1600)          0           maxpooling2d_5[0][0]             
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 1164)          1863564     flatten_1[0][0]                  
+____________________________________________________________________________________________________
+activation_6 (Activation)        (None, 1164)          0           dense_1[0][0]                    
+____________________________________________________________________________________________________
+dense_2 (Dense)                  (None, 100)           116500      activation_6[0][0]               
+____________________________________________________________________________________________________
+activation_7 (Activation)        (None, 100)           0           dense_2[0][0]                    
+____________________________________________________________________________________________________
+dense_3 (Dense)                  (None, 50)            5050        activation_7[0][0]               
+____________________________________________________________________________________________________
+activation_8 (Activation)        (None, 50)            0           dense_3[0][0]                    
+____________________________________________________________________________________________________
+dense_4 (Dense)                  (None, 10)            510         activation_8[0][0]               
+____________________________________________________________________________________________________
+activation_9 (Activation)        (None, 10)            0           dense_4[0][0]                    
+____________________________________________________________________________________________________
+dense_5 (Dense)                  (None, 1)             11          activation_9[0][0]               
+====================================================================================================
+Total params: 2,116,983
+Trainable params: 2,116,983
+Non-trainable params: 0
 
 ####1. An appropriate model architecture has been employed
 
